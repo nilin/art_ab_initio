@@ -1,0 +1,12 @@
+{
+    "img_path_train":"pics/training",
+    "img_path_insp":"pics/inspiration",
+    "render_pics_path":"pics/imagination",
+    "art_output_path":"pics/art_outputs",
+    "batchsize":2,
+    "train_res":128,
+    "render_res_in":512,
+    "render_res_out":512,
+    "checknans":"True",
+    "ignorenans":"False"
+}
