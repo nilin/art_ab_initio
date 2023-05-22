@@ -17,7 +17,7 @@ for content_path in pics/cont_imag/*; do
             --content_path $content_path \
             --out_path $outpath
 
-        python recolor.py $outpath $content_path $outpath
-        python revalue.py $outpath $content_path $outpath
+        python style_transfer/recolor.py $outpath $content_path $outpath
+        python style_transfer/revalue.py $outpath $content_path $outpath
     done
 done
