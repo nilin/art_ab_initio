@@ -9,7 +9,7 @@ from functools import partial
 from art import util, models
 from .geometry import *
 from . import geometry as geometry
-from artist import *
+from .artist import *
 
 
 

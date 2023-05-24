@@ -1,6 +1,6 @@
 mkdir pics/imagination
 
-for content_path in pics/cont_imag/*; do
+for content_path in pics/content/*; do
     contentname=$(basename -- "$content_path")
     contentname="${contentname%.*}"
 

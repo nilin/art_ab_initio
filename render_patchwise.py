@@ -17,14 +17,9 @@ parser=argparse.ArgumentParser()
 parser.add_argument('--makestyle',action='store_true')
 args=parser.parse_args()
 
-if args.makestyle:
-    os.makedirs('pics/styles',exist_ok=True)
-    picspath='pics/inspiration'
-    path='pics/styles'
-else:
-    #picspath=json.load(open('config.json'))['render_pics_path']
-    picspath='pics/cont_render'
-    path=json.load(open('config.json'))['art_output_path']
+picspath='pics/content'
+path='pics/rendered_patchwise'
+#path=json.load(open('config.json'))['art_output_path']
 os.makedirs(path,exist_ok=True)
 
 def getpath(path='weights'):
@@ -32,14 +27,10 @@ def getpath(path='weights'):
     prevsessions.sort(key=lambda name:int(name.split('_')[1]))
     print('options:')
     for s in prevsessions: print(s)
-    counter=int(input('\nInput session number:\nsession_'))
+    counter=int(input('\nLoad weights from training session number:\nsession_'))
     return os.path.join(path,'session_{}'.format(counter))
 
 train_res=int(json.load(open('config.json'))['train_res'])
-#in_res=int(json.load(open('config.json'))['render_res_in'])
-#out_res=int(json.load(open('config.json'))['render_res_out'])
-#repeats=(in_res//train_res)**2
-
 
 patchres=128
 outres=512
@@ -57,7 +48,7 @@ applyfn_=lambda params,pic,bg,up: trainer.apply(
     )
 
 applyfns=[jax.jit(partial(applyfn_,up=r)) for r in [4,2,1]]
-repeats=[0,0,256]
+repeats=[0,62,0]
 patchsizes=[512,256,128]
 
 dir=[fn for fn in os.listdir(picspath) if fn[0]!='.']
@@ -91,10 +82,10 @@ for picfile in dir:
     Painting=np.array(bg)
 
     for patchsize,fn,reps,keys in zip(patchsizes,applyfns,repeats,Keys):
-        print(patchsize)
+        print('patch size {}'.format(patchsize))
 
         for i,key in enumerate(keys[:reps]):
-            print(i)
+            print('layer {}'.format(i))
             x,y=rnd.choice(key,outres-patchsize+1,(2,))
             patch=Painting[x:x+patchsize,y:y+patchsize]
             picpatch=pic[x:x+patchsize,y:y+patchsize]
