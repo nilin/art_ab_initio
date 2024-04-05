@@ -1,3 +1,7 @@
+Code for the paper
+Inventing art styles with no artistic training data
+https://arxiv.org/pdf/2305.12015.pdf
+
 1. The modules for our medium+perception-driven procedure are in ./art/
 This procedure is trained in ./train.py 
 To apply the trained model use render_patchwise.py 
