@@ -1,4 +1,4 @@
-# art_ab_initio
+# Inventing art styles with no artistic training data
 
 Code for the paper ["Inventing art styles with no artistic training data"](https://arxiv.org/pdf/2305.12015.pdf).
 
