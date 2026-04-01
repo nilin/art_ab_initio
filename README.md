@@ -26,20 +26,6 @@ The paper proposes two ways to create new visual styles while avoiding artistic 
 
 In the paper, this setup is meant to give an objective guarantee that the model is not reproducing human art styles from training data.
 
-## How the repository maps to the paper
-
-- `art/`: differentiable painting components, including brush geometry, color compositing, neural modules, and training logic.
-- `train.py`: trains the **medium+perception-driven** painter on photographs.
-- `render_patchwise.py`: applies a trained painter patch-by-patch to render higher-resolution paintings.
-- `render_hardcoded.py`: runs a simpler hard-coded baseline used for the **inspiration-driven** pipeline.
-- `imagine.sh`: generates imagination images from subject + inspiration pairs using the optional `style_transfer` submodule.
-- `pics/`: example subject, inspiration, imagination, and rendered outputs.
-
-If you only want to understand the repository at a high level, the most important split is:
-
-- `train.py` + `art/`: the learned painter from the paper's **medium+perception-driven** method.
-- `imagine.sh` + `render_hardcoded.py`: the paper's **inspiration-driven** method.
-
 ## Visual examples
 
 ### 1) Medium+perception-driven painting
@@ -80,9 +66,21 @@ For this procedure, the paper uses style transfer only as a way to combine the *
 
 
 
-- This repository is best read as **paper code** rather than a polished package.
-- Reproducing the exact environment today may take extra work because the repo reflects a specific research snapshot.
-- The training objective follows the paper's idea of learning a painting procedure under tool constraints, with reconstruction used to preserve recognizable structure.
+## How the repository maps to the paper
+
+- `art/`: differentiable painting components, including brush geometry, color compositing, neural modules, and training logic.
+- `train.py`: trains the **medium+perception-driven** painter on photographs.
+- `render_patchwise.py`: applies a trained painter patch-by-patch to render higher-resolution paintings.
+- `render_hardcoded.py`: runs a simpler hard-coded baseline used for the **inspiration-driven** pipeline.
+- `imagine.sh`: generates imagination images from subject + inspiration pairs using the optional `style_transfer` submodule.
+- `pics/`: example subject, inspiration, imagination, and rendered outputs.
+
+If you only want to understand the repository at a high level, the most important split is:
+
+- `train.py` + `art/`: the learned painter from the paper's **medium+perception-driven** method.
+- `imagine.sh` + `render_hardcoded.py`: the paper's **inspiration-driven** method.
+
+This repository is best read as **paper code** rather than a polished package. Reproducing the exact environment today may take extra work because the repo reflects a specific research snapshot from 2023.
 
 ## Reference
 
