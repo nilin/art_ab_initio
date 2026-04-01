@@ -4,8 +4,9 @@ Code for the paper ["Inventing art styles with no artistic training data"](https
 
 
 <p align="center">
-  <img src="btower.jpg" alt="Example from the paper combining a subject image, an inspiration image, and the resulting painting." width="720">
+  <img src="dandelionpainting.jpg" alt="Example from the paper" width="600">
 </p>
+
 
 ## What this repo is about
 
@@ -73,50 +74,15 @@ Another example from the repository assets:
 
 For this procedure, the paper uses style transfer only as a way to combine the **content of a subject photo** with the **appearance cues of another natural photo**. The resulting imagination image is then painted by a baseline renderer.
 
-<table>
-  <tr>
-    <td align="center"><strong>Subject</strong></td>
-    <td align="center"><strong>Inspiration</strong></td>
-    <td align="center"><strong>Imagination</strong></td>
-    <td align="center"><strong>Final painting</strong></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="pics/content/IMG_4988.JPG" alt="Subject image." width="210"></td>
-    <td align="center"><img src="pics/inspiration/grill1.jpg" alt="Inspiration image." width="210"></td>
-    <td align="center"><img src="pics/imagination/c_IMG_4988_i_grill1.jpg" alt="Imagination image produced by style transfer." width="210"></td>
-    <td align="center"><img src="pics/rendered_2/painting_c_IMG_4988_i_grill1.jpg" alt="Painting produced from the imagination image." width="210"></td>
-  </tr>
-</table>
+ <p align="center">
+ <img src="btower.jpg" alt="Example from the paper combining a subject image, an inspiration image, and the resulting painting." width="600">
+ </p>
 
-## What the style-transfer submodule is used for
 
-You do **not** need the `style_transfer` submodule to understand the main idea of this repository, and you do not need it to view the included example results.
-
-Its role in the paper is narrow:
-
-- It is used only in the **inspiration-driven** procedure.
-- It creates the intermediate **imagination** image from a subject photo and an inspiration photo.
-- The painting code in this repository then turns that imagination image into a final artwork.
-
-So the style-transfer step is **not** the core painter. It is just a way to steer the final painting with another natural image.
-
-## If you are reading the code
-
-You do not need to run everything to understand the project. A useful reading order is:
-
-1. Read the paper's description of the two procedures.
-2. Look at `art/artist.py` and `art/trainer.py` for the learned brush-based painter.
-3. Look at `train.py` to see how the painter and reconstruction model are optimized together.
-4. Look at `render_patchwise.py` to see how a trained model is applied to a full image.
-5. Look at `render_hardcoded.py` and `imagine.sh` for the inspiration pipeline.
-
-## Notes
 
 - This repository is best read as **paper code** rather than a polished package.
 - Reproducing the exact environment today may take extra work because the repo reflects a specific research snapshot.
-- The training objective follows the paper's idea of learning a painting procedure under medium constraints, with reconstruction used to preserve recognizable structure.
-- `render_patchwise.py` is the script that most directly reproduces the learned painter described in the paper.
-- `render_hardcoded.py` is helpful for understanding the inspiration pipeline in isolation.
+- The training objective follows the paper's idea of learning a painting procedure under tool constraints, with reconstruction used to preserve recognizable structure.
 
 ## Reference
 
