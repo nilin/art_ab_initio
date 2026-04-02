@@ -10,7 +10,7 @@ Code for the paper ["Inventing art styles with no artistic training data"](https
 
 ## What this repo is about
 
-This repository is a research codebase for making paintings **without training on human-made artworks**. The core idea is that the model learns to paint its artistic representation of a subject (say, a boring photograph) by controlling the artistic tool (the digital paintbrush) to create an image that it can decode back into the original subject. The artistic style comes from trying to encode the information of the subject under the constraints of the painting medium. 
+This repository is a research codebase for making paintings **without training on human-made artworks**. The idea is that the model learns to paint its artistic representation of a subject (say, a boring photograph) by controlling the artistic tool (the digital paintbrush) to create an image that it can decode back into the original subject. The artistic style comes from trying to encode the information of the subject under the constraints of the painting medium. 
 
 The paper proposes two ways to create new visual styles while avoiding artistic training data:
 
